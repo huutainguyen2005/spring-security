@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragment/frag :: head}"></head>
+<body>
+<div th:insert="~{fragment/frag :: navbar}"></div>
+
+<form method="post"  th:object="${artist}" th:action="@{/artist/delete/{id}(id=*{artistId})}">
+    <h1>DELETE ARTIST</h1>
+    <p>Are You Sure To Delete Artist</p>
+    <input type="hidden" th:field="*{artistId}">
+    <button type="submit">Delete</button>
+    <a th:href="@{/artist}" type="button" class="btn btn-outline-secondary">Back</a>
+</form>
+</body>
+</html>
