@@ -2,7 +2,7 @@
 <html lang="en">
 <head th:replace="~{fragment/frag :: head}"></head>
 <body>
-<div th:insert="~{fragment/frag :: navbar}"></div>
+<div th:insert="~{fragment/frag :: navBar}"></div>
 <h1>Create New Artist</h1>
 <form method="post" th:action="@{/artist/save}" th:object="${artist}">
     <label>ID</label>

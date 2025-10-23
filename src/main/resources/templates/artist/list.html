@@ -1,15 +1,12 @@
-<!DOCTYPE html>
 <html lang="en">
 <head th:replace="~{fragment/frag :: head}"></head>
 <body>
-
     <style>
-    .pagination {
-        justify-content: center;
-    }
+        .pagination {
+            justify-content: center;
+        }
     </style>
-
-<div th:insert="~{fragment/frag :: navbar}"></div>
+<div th:insert="~{fragment/frag :: navBar}"></div>
 <div class="container">
     <a type="button" class="btn btn-success" th:href="@{/artist/new}">Create</a>
     <table class="table">

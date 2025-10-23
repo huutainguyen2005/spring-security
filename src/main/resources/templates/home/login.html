@@ -1,25 +1,23 @@
 <html>
 <head th:replace="fragment/frag :: head">
 <body>
-<header th:replace="fragment/frag :: navBar">
+<header th:replace="fragment/frag :: navBar"></header>
 <form th:action="@{/login}" method="post">
-<p>
-    <label for="username">
-        Username
-    </label>
-    <input type="text" id="username" name="username">
-
-</p>
-<p>
-    <label for="password">
-        Password
-    </label>
-    <input type="password" id="password" name="password">
-
-</p>
-<p>
-    <button type="submit">Login</button>
-</p>
+    <p>
+        <label for="username">
+            Username
+        </label>
+        <input type="text" id="username" name="username">
+    </p>
+    <p>
+        <label for="password">
+            Password
+        </label>
+        <input type="password" id="password" name="password">
+    </p>
+    <p>
+        <button type="submit">Login</button>
+    </p>
 </form>
 </body>
 </html>

@@ -33,6 +33,16 @@ public class SecurityConfig {
                         .failureUrl("/login?error=true")
                         .permitAll()
                 ) //AuthenticationManager -> uỷ quyền provider: 1. DAO 2. OAuth2 3. ... ldap
+
+                //logout -> nhận request -> kiểm tra session -> invalidate session
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
+                        .clearAuthentication(true)
+                        .permitAll()
+                )
                 .build();
 
     }
