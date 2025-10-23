@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragment/frag :: head}"></head>
 <body>
-<div th:insert="~{fragment/frag :: navbar}"></div>
+<div th:insert="~{fragment/frag :: navBar}"></div>
 
 <form method="post"  th:object="${artist}" th:action="@{/artist/delete/{id}(id=*{artistId})}">
     <h1>DELETE ARTIST</h1>

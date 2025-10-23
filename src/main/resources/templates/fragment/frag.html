@@ -32,7 +32,11 @@
                 </ul>
                 <ul class="navbar-nav" sec:authorize="isAuthenticated()">
                     <li class="nav-item">
-                        <button type="submit">Hi <span sec:authentication="name"></span>, logout</button>
+                        <form th:action="@{/logout}" method="post">
+                            <button type="submit" class="btn btn-link nav-link">
+                                Hi <span sec:authentication="name"></span>, Logout
+                            </button>
+                        </form>
                     </li>
                 </ul>
             </div>

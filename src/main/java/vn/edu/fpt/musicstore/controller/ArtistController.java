@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -43,6 +44,7 @@ public class ArtistController {
     }
 
     @RequestMapping(value = "/edit/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String edit(Model model, @PathVariable("id") int id) {
         model.addAttribute("artist", artistService.findById(id));
         return "artist/edit";
@@ -55,6 +57,7 @@ public class ArtistController {
     }
 
     @RequestMapping(value = "/delete/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteArtist(Model model, @PathVariable("id") int id) {
         System.out.println("Artist id:" + id);
         model.addAttribute("artist", artistService.findById(id));
@@ -69,6 +72,7 @@ public class ArtistController {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('ADMIN')")
     public String delete(@ModelAttribute(name = "artist") Artist artist) {
         System.out.println("Artist id:" + artist.getArtistId());
         artistService.deleteById(artist.getArtistId());

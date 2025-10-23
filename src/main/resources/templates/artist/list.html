@@ -1,4 +1,4 @@
-<html lang="en">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragment/frag :: head}"></head>
 <body>
     <style>
@@ -12,21 +12,25 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Action</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="artist : ${artists}" th:object="${artist}">
             <!--            selection standard expression-->
-            <th th:text="*{artistId}" scope="row"></th>
+            <th th:text="*{artistId}"\></th>
             <td th:text="*{artistName}"></td>
             <td>
+                <!-- Vai trò: ADMIN - Quyền: ORDER_EDIT, PRODUCT_EDIT, STOCK_EDIT -->
                 <a th:href="@{/artist/{id}(id=*{artistId})}" type="button" class="btn btn-outline-secondary">Details</a>
-                <a th:href="@{/artist/edit/{id}(id=*{artistId})}" type="button" class="btn btn-primary">Edit</a>
-                |
-                <a th:href="@{/artist/delete/{id}(id=*{artistId})}" type="button" class="btn btn-danger">Delete</a>
+                <a th:href="@{/artist/edit/{id}(id=*{artistId})}" type="button" class="btn btn-primary" sec:authorize="hasRole('ADMIN')">
+                    Edit
+                </a>
+                <a th:href="@{/artist/delete/{id}(id=*{artistId})}" type="button" class="btn btn-danger" sec:authorize="hasRole('ADMIN')">
+                    Delete
+                </a>
             </td>
         </tr>
         </tbody>
@@ -56,6 +60,6 @@
         </ul>
     </nav>
 </div>
+<div th:replace="~{fragment/frag :: footer}"></div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </html>
